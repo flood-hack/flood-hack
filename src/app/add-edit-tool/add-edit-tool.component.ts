@@ -19,7 +19,7 @@ export class AddEditToolComponent implements OnInit {
   constructor(
     private bff: BFFService,
     private dialogRef: MatDialogRef<AddEditToolComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: IdProvider,
+    @Inject(MAT_DIALOG_DATA) public data: IdProvider,
     private formBuilder: FormBuilder
   ) { }
 
@@ -56,6 +56,11 @@ export class AddEditToolComponent implements OnInit {
   }
 
   public cancel(): void {
+    this.dialogRef.close();
+  }
+
+  public save(): void {
+    console.log('save!');
     this.dialogRef.close();
   }
 
