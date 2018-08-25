@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns:atom="http://www.w3.org/2005/Atom" xmlns="http://www.opengis.net/kml/2.2"> <NetworkLink>
+<open>1</open>
+<name>Generate KML</name>
+<LookAt>
+<longitude>-7.0045380525322685</longitude>
+<latitude>6.56542122319302</latitude>
+<range>1.806135591487342E7</range>
+</LookAt>
+<Link>
+<viewRefreshMode>onStop</viewRefreshMode>
+<viewRefreshTime>2</viewRefreshTime>
+<href>https://www.coast.noaa.gov/arcgis/services/dc_slr/conf_0ft/MapServer/KmlServer?Composite=true&amp;LayerIDs=-1</href>
+<viewFormat>BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth];CAMERA=[lookatLon],[lookatLat],[lookatRange],[lookatTilt],[lookatHeading];VIEW=[horizFov],[vertFov],[horizPixels],[vertPixels],[terrainEnabled]</viewFormat>
+</Link>
+</NetworkLink>
+</kml>
