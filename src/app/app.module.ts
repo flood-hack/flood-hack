@@ -2,13 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import {
+  MatGridListModule,
+  MatDialogModule,
+  MatCardModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 import {
   AgmCoreModule,
@@ -22,6 +31,10 @@ import {
 import { MapComponent } from './map/map.component';
 import { ToolsComponent } from './tools/tools.component';
 import { HomeComponent } from './home/home.component';
+import { AddEditToolComponent } from './add-edit-tool/add-edit-tool.component';
+
+import { BFFService } from './shared/services/bff.service';
+
 
 const routes: Routes = [
   {
@@ -48,22 +61,33 @@ const routes: Routes = [
     AppComponent,
     MapComponent,
     ToolsComponent,
-    HomeComponent
+    HomeComponent,
+    AddEditToolComponent
+  ],
+  entryComponents: [
+    AddEditToolComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
     MatProgressSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVMNc36p4Gj64WfbJXdBBXwm5Kg0nCZVQ'
     })
   ],
   providers: [
+    BFFService,
     DataLayerManager,
     GoogleMapsAPIWrapper,
     InfoWindowManager,

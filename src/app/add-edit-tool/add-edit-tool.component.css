@@ -1,0 +1,11 @@
+form > div {
+  margin-bottom: 5px
+}
+
+div > .mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-actions {
+  justify-content: space-around;
+}
