@@ -60,8 +60,19 @@ export class AddEditToolComponent implements OnInit {
   }
 
   public save(): void {
-    console.log('save!');
-    this.dialogRef.close();
+    if (this.data.id) {
+      this.bff
+        .updateTool(this.data.id, this.addEditToolForm.value)
+        .subscribe(() => {
+          this.dialogRef.close();
+        });
+    } else {
+      this.bff
+        .addTool(this.addEditToolForm.value)
+        .subscribe(() => {
+          this.dialogRef.close();
+        });
+    }
   }
 
 }
