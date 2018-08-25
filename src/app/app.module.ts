@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,8 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 import {
   AgmCoreModule,
+  DataLayerManager,
   GoogleMapsAPIWrapper,
-  KmlLayerManager
+  InfoWindowManager,
+  KmlLayerManager,
+  MarkerManager
 } from '@agm/core';
 
 import { MapComponent } from './map/map.component';
@@ -48,6 +51,7 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(routes),
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatGridListModule,
@@ -58,8 +62,11 @@ const routes: Routes = [
     })
   ],
   providers: [
+    DataLayerManager,
     GoogleMapsAPIWrapper,
-    KmlLayerManager
+    InfoWindowManager,
+    KmlLayerManager,
+    MarkerManager
   ],
   bootstrap: [
     AppComponent
