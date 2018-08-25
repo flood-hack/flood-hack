@@ -39,6 +39,7 @@ import { MapComponent } from './map/map.component';
 import { ToolsComponent } from './tools/tools.component';
 import { HomeComponent } from './home/home.component';
 import { AddEditToolComponent } from './add-edit-tool/add-edit-tool.component';
+import { ReportDialogComponent } from './report-dialog/report-dialog.component';
 
 import { BFFService } from './shared/services/bff.service';
 
@@ -69,10 +70,12 @@ const routes: Routes = [
     MapComponent,
     ToolsComponent,
     HomeComponent,
-    AddEditToolComponent
+    AddEditToolComponent,
+    ReportDialogComponent
   ],
   entryComponents: [
-    AddEditToolComponent
+    AddEditToolComponent,
+    ReportDialogComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

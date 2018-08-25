@@ -20,6 +20,14 @@ import {
   Spatial
 } from '../shared/models';
 
+import {
+  MatDialog
+} from '@angular/material';
+
+import {
+  ReportDialogComponent
+} from '../report-dialog/report-dialog.component';
+
 @Component({
   selector: 'app-map',
   templateUrl: 'map.component.html',
@@ -57,6 +65,7 @@ export class MapComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    public dialog: MatDialog,
     private bffService: BFFService
   ) {}
 
@@ -108,7 +117,9 @@ export class MapComponent implements OnInit {
   }
 
   public clickReport() {
-    console.log(this.infoWindowProperties);
+    const dialogRef = this.dialog.open(ReportDialogComponent, {
+      data: this.infoWindowProperties
+    });
   }
 
 }
