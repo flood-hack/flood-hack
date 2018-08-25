@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AddEditToolRequest, IdProvider, Tool } from '../models';
+import {
+    AddEditToolRequest,
+    IdProvider,
+    Tool,
+    Spatial
+  } from '../models';
 
 @Injectable()
 export class BFFService {
@@ -32,5 +37,19 @@ export class BFFService {
           return response.status;
         })
       );
+  }
+
+  public getSpatials(): Observable<Spatial[]> {
+    // return this.http.get<Spatial[]>(`${this.baseUrl}/spatials`);
+    return of([
+      new Spatial({
+        name: 'Drains',
+        url: 'assets/SW_Inlets.geojson'
+      }),
+      new Spatial({
+        name: 'Basins',
+        url: 'https://opendata.arcgis.com/datasets/a6c40fca30bf43eab66b4f71a1999feb_17.geojson'
+      })
+    ]);
   }
 }

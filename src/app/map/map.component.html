@@ -1,39 +1,52 @@
-<agm-map
-  [latitude]="lat"
-  [longitude]="lng"
-  [zoom]="zoom">
+<mat-sidenav-container class="map-container">
+  <mat-sidenav mode="side" opened>
+    <mat-selection-list
+      [(ngModel)]="spatialsSelected"
+      (ngModelChange)="spatialsSelectedChange($event)">
+      <mat-list-option *ngFor="let spatial of spatials" [value]="spatial">
+        {{ spatial.name }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom">
 
-  <agm-marker
-    [latitude]="lat"
-    [longitude]="lng">
-  </agm-marker>
+      <agm-marker
+        [latitude]="lat"
+        [longitude]="lng">
+      </agm-marker>
 
-  <agm-data-layer
-    *ngIf="geoJsonObject"
-    [geoJson]="geoJsonObject"
-    (layerClick)="clickDataLayerMarker($event)"
-    [style]="getStyle">
-  </agm-data-layer>
+      <ng-container *ngFor="let spatial of spatialsSelected">
+        <agm-data-layer
+          *ngIf="spatial.data"
+          [geoJson]="spatial.data"
+          (layerClick)="clickDataLayerMarker($event)"
+          [style]="getStyle">
+        </agm-data-layer>
+      </ng-container>
 
-  <agm-info-window
-    [latitude]="infoWindowLat"
-    [longitude]="infoWindowLng">
-    <div *ngIf="infoWindowProperties" class="info-window-inner">
-      <div *ngFor="let key of infoWindowPropertyKeys">
-        <p *ngIf="infoWindowProperties[key] && infoWindowProperties[key] !== ''">
-          {{ key }}: {{ infoWindowProperties[key] }}
-        </p>
-      </div>
-
-      <button
-        mat-raised-button
-        (click)="clickReport()">
-        Report
-      </button>
-    </div>
-  </agm-info-window>
-
-</agm-map>
+      <agm-info-window
+        [latitude]="infoWindowLat"
+        [longitude]="infoWindowLng">
+        <div *ngIf="infoWindowProperties" class="info-window-inner">
+          <div *ngFor="let key of infoWindowPropertyKeys">
+            <p *ngIf="infoWindowProperties[key] && infoWindowProperties[key] !== ''">
+              {{ key }}: {{ infoWindowProperties[key] }}
+            </p>
+          </div>
+          <button
+            mat-raised-button
+            (click)="clickReport()">
+            Report
+          </button>
+        </div>
+      </agm-info-window>
+    </agm-map>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 <div class="spinner-wrapper" *ngIf="isLoading">
   <mat-progress-spinner
