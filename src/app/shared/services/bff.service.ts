@@ -7,11 +7,13 @@ import { AddEditToolRequest, IdProvider, Tool } from '../models';
 @Injectable()
 export class BFFService {
   private readonly baseUrl: string = 'https://flood-hack-bff.azurewebsites.net/api';
+  // private readonly baseUrl: string = 'https://localhost:8003/api';
+
 
   constructor(private http: HttpClient) { }
 
-  public addTool(addTool: AddEditToolRequest): Observable<IdProvider> {
-    return this.http.post<IdProvider>(`${this.baseUrl}/tools}`, addTool);
+  public addTool(addTool: AddEditToolRequest): Observable<any> {
+    return this.http.post(`${this.baseUrl}/tools`, addTool);
   }
 
   public getTool(id: string): Observable<Tool> {
