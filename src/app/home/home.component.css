@@ -1,0 +1,25 @@
+h1 {
+  color: white;
+  font-family: "Helvetica";
+  font-size: 52px;
+  text-shadow: 1px 1px black;
+}
+
+section {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 25px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("https://bloximages.newyork1.vip.townnews.com/postandcourier.com/content/tncms/assets/v3/editorial/a/1e/a1efca90-9733-11e7-9858-1f96d8b87d96/59b6f86765f3e.image.jpg");
+}
