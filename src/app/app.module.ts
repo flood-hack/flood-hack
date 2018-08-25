@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -16,7 +20,10 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatListModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import {
@@ -80,8 +87,12 @@ const routes: Routes = [
     MatSelectModule,
     MatDialogModule,
     MatInputModule,
+    FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCheckboxModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVMNc36p4Gj64WfbJXdBBXwm5Kg0nCZVQ'
     })

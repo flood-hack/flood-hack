@@ -12,6 +12,14 @@ import {
   AgmInfoWindow
 } from '@agm/core';
 
+import {
+  BFFService
+} from '../shared/services';
+
+import {
+  Spatial
+} from '../shared/models';
+
 @Component({
   selector: 'app-map',
   templateUrl: 'map.component.html',
@@ -31,7 +39,12 @@ export class MapComponent implements OnInit {
   public infoWindowLng = this.lng;
   public isLoading = true;
 
+  public spatials: Array<Spatial>;
+  public spatialsSelected: Array<Spatial>;
+
   public infoWindowPropertyKeys = [
+    'Name',
+    'Source',
     'COMMENTS',
     'ACCESSTYPE',
     'BASINID',
@@ -43,10 +56,18 @@ export class MapComponent implements OnInit {
   @ViewChild(AgmInfoWindow) infoWindow;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private bffService: BFFService
   ) {}
 
   public ngOnInit() {
+    this.bffService
+      .getSpatials()
+      .subscribe((spatials: Spatial[]) => {
+        this.spatials = spatials;
+        this.isLoading = false;
+      });
+
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
@@ -56,13 +77,6 @@ export class MapComponent implements OnInit {
         }
       );
     }
-
-    this.http
-      .get('assets/SW_Inlets.geojson')
-      .subscribe((data: any) => {
-        this.geoJsonObject = data;
-        this.isLoading = false;
-      });
   }
 
   public getStyle() {
@@ -71,7 +85,22 @@ export class MapComponent implements OnInit {
     };
   }
 
+  public spatialsSelectedChange(spatials) {
+    spatials.forEach((spatial: Spatial) => {
+      if (!spatial.data) {
+        this.isLoading = true;
+        this.http
+          .get(spatial.url)
+          .subscribe((data: any) => {
+            spatial.data = data;
+            this.isLoading = false;
+          });
+      }
+    });
+  }
+
   public clickDataLayerMarker(evt) {
+    console.log(evt);
     this.infoWindowProperties = evt.feature.f;
     this.infoWindowLat = evt.latLng.lat();
     this.infoWindowLng = evt.latLng.lng();

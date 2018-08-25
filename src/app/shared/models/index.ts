@@ -4,3 +4,4 @@ export * from './issues';
 export * from './regions';
 export * from './tool';
 export * from './tool-functions';
+export * from './spatial';
