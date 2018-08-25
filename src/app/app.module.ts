@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
   MatGridListModule,
   MatDialogModule,
@@ -14,7 +15,8 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import {
@@ -79,6 +81,7 @@ const routes: Routes = [
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVMNc36p4Gj64WfbJXdBBXwm5Kg0nCZVQ'
     })
