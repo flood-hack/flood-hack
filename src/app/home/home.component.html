@@ -4,7 +4,9 @@
   </div>
   <section>
     <button mat-raised-button
-      color="primary">Tools</button>
-    <button mat-raised-button>Maps</button>
+      color="primary"
+      (click)="navigate('../tools')">Tools</button>
+    <button mat-raised-button
+      (click)="navigate('../map')">Maps</button>
   </section>
 </main>

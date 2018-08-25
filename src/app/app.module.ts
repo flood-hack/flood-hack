@@ -29,6 +29,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'tools',
+    component: ToolsComponent
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
