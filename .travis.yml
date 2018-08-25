@@ -19,5 +19,7 @@ before_deploy:
 
 deploy:
   provider: azure_web_apps
+  username: flood-hack-user
+  site: flood-hack
   skip_cleanup: true
   verbose: true
