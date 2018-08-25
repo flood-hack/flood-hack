@@ -19,8 +19,11 @@ import {
 
 import {
   AgmCoreModule,
+  DataLayerManager,
   GoogleMapsAPIWrapper,
-  KmlLayerManager
+  InfoWindowManager,
+  KmlLayerManager,
+  MarkerManager
 } from '@agm/core';
 
 import { MapComponent } from './map/map.component';
@@ -64,6 +67,7 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(routes),
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -81,8 +85,11 @@ const routes: Routes = [
   ],
   providers: [
     BFFService,
+    DataLayerManager,
     GoogleMapsAPIWrapper,
-    KmlLayerManager
+    InfoWindowManager,
+    KmlLayerManager,
+    MarkerManager
   ],
   bootstrap: [
     AppComponent

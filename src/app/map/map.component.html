@@ -8,4 +8,15 @@
     [longitude]="lng">
   </agm-marker>
 
+  <agm-data-layer
+    *ngIf="geoJsonObject"
+    [geoJson]="geoJsonObject"
+    (layerClick)="clicked($event)"
+    [style]="styleFunc">
+  </agm-data-layer>
+
+  <agm-info-window [disableAutoPan]="true">
+    Hi, this is the content of the <strong>info window</strong>
+  </agm-info-window>
+
 </agm-map>
