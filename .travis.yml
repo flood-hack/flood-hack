@@ -1,0 +1,11 @@
+language: node_js
+
+branches:
+  only:
+    - master
+
+script:
+  - npm run build
+
+deploy:
+  provider: azure_web_apps
