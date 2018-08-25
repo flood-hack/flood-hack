@@ -14,9 +14,6 @@ install:
 script:
   - npm run build
 
-before_deploy:
-  - cd dist/flood-hack
-
 deploy:
   provider: azure_web_apps
   username: flood-hack-user
