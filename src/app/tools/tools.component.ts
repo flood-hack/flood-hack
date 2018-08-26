@@ -12,6 +12,8 @@ import { BFFService } from '../shared/services';
 })
 export class ToolsComponent implements OnInit {
   public tools: Tool[];
+  public columns = 3;
+  private maxStringLength = 350;
   private addEditFormRef: MatDialogRef<AddEditToolComponent>;
   private searchFormRef: MatDialogRef<SearchComponent>;
   private readonly width: string = '320px';
@@ -29,7 +31,7 @@ export class ToolsComponent implements OnInit {
         regions: []
       }))
       .subscribe((response: any) => {
-        this.tools = response.tools;
+        this.tools = this.truncateDescriptions(response.tools);
       });
   }
 
@@ -56,9 +58,8 @@ export class ToolsComponent implements OnInit {
     this.searchFormRef
       .afterClosed()
       .subscribe((result: Tool[]) => {
-        this.tools = result;
+        this.tools = this.truncateDescriptions(result);
       });
-
   }
 
   public openEditForm(id: string): void {
@@ -67,6 +68,15 @@ export class ToolsComponent implements OnInit {
       data: {
         id
       }
+    });
+  }
+
+  private truncateDescriptions(tools: Tool[]): Tool[] {
+    return tools.map((tool: Tool) => {
+      if (tool.description.length > this.maxStringLength) {
+        tool.description = tool.description.substr(0, this.maxStringLength) + '...';
+      }
+      return tool;
     });
   }
 }
