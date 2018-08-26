@@ -10,6 +10,8 @@ import {
 
 import { AppComponent } from './app.component';
 
+import { AppNavComponent } from './app-nav/app-nav.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -25,7 +27,8 @@ import {
   MatSidenavModule,
   MatListModule,
   MatCheckboxModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatToolbarModule
 } from '@angular/material';
 
 import {
@@ -70,6 +73,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    AppNavComponent,
     MapComponent,
     ToolsComponent,
     HomeComponent,
@@ -103,6 +107,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatCheckboxModule,
+    MatToolbarModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVMNc36p4Gj64WfbJXdBBXwm5Kg0nCZVQ'
     })
