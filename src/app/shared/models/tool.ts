@@ -1,6 +1,7 @@
 import { Issues, Regions, ToolFunctions } from '.';
 
 export class Tool {
+  public id: string;
   public name: string;
   public description: string;
   public issues: Issues[];

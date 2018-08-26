@@ -12,8 +12,8 @@ import {
 
 @Injectable()
 export class BFFService {
-  private readonly baseUrl: string = 'https://flood-hack-bff.azurewebsites.net/api';
-  // private readonly baseUrl: string = 'https://localhost:8003/api';
+  // private readonly baseUrl: string = 'https://flood-hack-bff.azurewebsites.net/api';
+  private readonly baseUrl: string = 'https://localhost:8003/api';
 
   constructor(private http: HttpClient) { }
 

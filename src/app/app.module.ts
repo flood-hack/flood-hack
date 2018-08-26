@@ -24,7 +24,8 @@ import {
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatListModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatExpansionModule
 } from '@angular/material';
 
 import {
@@ -89,6 +90,7 @@ const routes: Routes = [
     MatIconModule,
     HttpClientModule,
     MatGridListModule,
+    MatExpansionModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,

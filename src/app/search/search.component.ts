@@ -38,8 +38,8 @@ export class SearchComponent implements OnInit {
   public search(): void {
     this.bff
       .search(this.searchForm.value)
-      .subscribe(() => {
-        this.dialogRef.close();
+      .subscribe((tools: any) => {
+        this.dialogRef.close(tools.tools);
       });
   }
 
