@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
+  MatIconModule,
   MatGridListModule,
   MatDialogModule,
   MatCardModule,
@@ -42,6 +43,7 @@ import { AddEditToolComponent } from './add-edit-tool/add-edit-tool.component';
 import { ReportDialogComponent } from './report-dialog/report-dialog.component';
 
 import { BFFService } from './shared/services/bff.service';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -71,10 +73,12 @@ const routes: Routes = [
     ToolsComponent,
     HomeComponent,
     AddEditToolComponent,
+    SearchComponent,
     ReportDialogComponent
   ],
   entryComponents: [
     AddEditToolComponent,
+    SearchComponent,
     ReportDialogComponent
   ],
   imports: [
@@ -82,6 +86,7 @@ const routes: Routes = [
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatIconModule,
     HttpClientModule,
     MatGridListModule,
     MatCardModule,

@@ -1,0 +1,14 @@
+h1 {
+  margin: 15px;
+  font: 400 34px/40px Roboto,"Helvetica Neue",sans-serif;
+}
+
+section {
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  width: 320px;
+  justify-content: space-evenly;
+}
