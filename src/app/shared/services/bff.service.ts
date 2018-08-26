@@ -6,6 +6,7 @@ import {
     AddEditToolRequest,
     IdProvider,
     Tool,
+    Social,
     Spatial
   } from '../models';
 
@@ -37,6 +38,10 @@ export class BFFService {
           return response.status;
         })
       );
+  }
+
+  public getSocial(): Observable<Social[]> {
+    return this.http.get<Social[]>(`${this.baseUrl}/social?q=%23chsFloodsHack`);
   }
 
   public getSpatials(): Observable<Spatial[]> {

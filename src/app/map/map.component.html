@@ -3,10 +3,22 @@
     <mat-selection-list
       [(ngModel)]="spatialsSelected"
       (ngModelChange)="spatialsSelectedChange($event)">
-      <mat-list-option *ngFor="let spatial of spatials" [value]="spatial">
+      <mat-list-option *ngFor="let spatial of spatials"
+        [value]="spatial"
+        checkboxPosition="before">
         {{ spatial.name }}
       </mat-list-option>
     </mat-selection-list>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item>
+          <mat-checkbox
+            [(ngModel)]="showSocial"
+            (change)="showSocialChange()">
+            Social
+          </mat-checkbox>
+        </mat-list-item>
+      </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <agm-map
@@ -18,6 +30,31 @@
         [latitude]="lat"
         [longitude]="lng">
       </agm-marker>
+
+      <ng-container *ngIf="showSocial && social">
+        <ng-container *ngFor="let status of social.statuses">
+          <ng-container *ngIf="status.geo">
+              <agm-marker
+                [latitude]="status.geo.coordinates[0]"
+                [longitude]="status.geo.coordinates[1]"
+                (markerClick)="clickSocialMarker(status)"
+                [markerClickable]="true"
+                iconUrl="assets/swimming.png">
+                <agm-info-window>
+                  <p>{{ status.text }}</p>
+                  <p>Posted by {{ status.user.screen_name }} at  {{ status.created_at }}</p>
+                  <p>
+                    <a
+                      mat-raised-button
+                      href="https://twitter.com/{{ status.user.screen_name }}/status/{{ status.id_str }}">
+                      See Tweet
+                    </a>
+                  </p>
+                </agm-info-window>
+            </agm-marker>
+          </ng-container>
+        </ng-container>
+      </ng-container>
 
       <ng-container *ngFor="let spatial of spatialsSelected">
         <agm-data-layer
