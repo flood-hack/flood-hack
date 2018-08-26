@@ -13,6 +13,12 @@ h1 {
   width: 300px;
 }
 
+.button-container {
+  display: flex;
+  width: 320px;
+  justify-content: space-evenly;
+}
+
 /* main {
   padding-bottom: 20px;
 }
