@@ -5,5 +5,10 @@ h1 {
 
 section {
   display: flex;
-  justify-content: space-around;
+}
+
+.button-container {
+  display: flex;
+  width: 320px;
+  justify-content: space-evenly;
 }

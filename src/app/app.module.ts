@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +21,10 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatListModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import {
@@ -33,6 +40,7 @@ import { MapComponent } from './map/map.component';
 import { ToolsComponent } from './tools/tools.component';
 import { HomeComponent } from './home/home.component';
 import { AddEditToolComponent } from './add-edit-tool/add-edit-tool.component';
+import { ReportDialogComponent } from './report-dialog/report-dialog.component';
 
 import { BFFService } from './shared/services/bff.service';
 import { SearchComponent } from './search/search.component';
@@ -65,11 +73,13 @@ const routes: Routes = [
     ToolsComponent,
     HomeComponent,
     AddEditToolComponent,
-    SearchComponent
+    SearchComponent,
+    ReportDialogComponent
   ],
   entryComponents: [
     AddEditToolComponent,
-    SearchComponent
+    SearchComponent,
+    ReportDialogComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -85,8 +95,12 @@ const routes: Routes = [
     MatSelectModule,
     MatDialogModule,
     MatInputModule,
+    FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCheckboxModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVMNc36p4Gj64WfbJXdBBXwm5Kg0nCZVQ'
     })

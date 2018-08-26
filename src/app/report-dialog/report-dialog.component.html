@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>
+  Report
+  <span *ngIf="data.GlobalId">{{ data.GlobalId }}</span>
+  <span *ngIf="data.Name">{{ data.Name }}</span>
+</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Any additional information"></textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Report</button>
+</mat-dialog-actions>
