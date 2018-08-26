@@ -17,6 +17,7 @@ import {
 } from '../shared/services';
 
 import {
+  Social,
   Spatial
 } from '../shared/models';
 
@@ -46,9 +47,11 @@ export class MapComponent implements OnInit {
   public infoWindowLat = this.lat;
   public infoWindowLng = this.lng;
   public isLoading = true;
+  public showSocial = false;
 
   public spatials: Array<Spatial>;
   public spatialsSelected: Array<Spatial>;
+  public social: Array<Social>;
 
   public infoWindowPropertyKeys = [
     'Name',
@@ -108,6 +111,19 @@ export class MapComponent implements OnInit {
     });
   }
 
+  public showSocialChange() {
+    if (this.showSocial && !this.social) {
+      this.isLoading = true;
+      this.bffService
+        .getSocial()
+        .subscribe((social: Social[]) => {
+          console.log(social);
+          this.social = social;
+          this.isLoading = false;
+        });
+    }
+  }
+
   public clickDataLayerMarker(evt) {
     console.log(evt);
     this.infoWindowProperties = evt.feature.f;
@@ -120,6 +136,10 @@ export class MapComponent implements OnInit {
     const dialogRef = this.dialog.open(ReportDialogComponent, {
       data: this.infoWindowProperties
     });
+  }
+
+  public clickSocialMarker(evt) {
+    console.log(evt);
   }
 
 }

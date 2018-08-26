@@ -6,14 +6,14 @@ import {
   AddEditToolRequest,
   FilterOptions,
   Tool,
+  Social,
   Spatial
 } from '../models';
 
 @Injectable()
 export class BFFService {
-  // private readonly baseUrl: string = 'https://flood-hack-bff.azurewebsites.net/api';
-  private readonly baseUrl: string = 'https://localhost:8003/api';
-
+  private readonly baseUrl: string = 'https://flood-hack-bff.azurewebsites.net/api';
+  // private readonly baseUrl: string = 'https://localhost:8003/api';
 
   constructor(private http: HttpClient) { }
 
@@ -40,17 +40,8 @@ export class BFFService {
       );
   }
 
-  private generateFilterParams(filterOptions: FilterOptions): HttpParams {
-    return Object.entries(filterOptions).reduce((prev: HttpParams, [key, value]) => {
-      if (Array.isArray(value) && value.length > 0) {
-        value.map(val => {
-          prev = prev.append(key, val.toString());
-        });
-      } else if (typeof value === 'string') {
-        prev = prev.set(key, value);
-      }
-      return prev;
-    }, new HttpParams());
+  public getSocial(): Observable<Social[]> {
+    return this.http.get<Social[]>(`${this.baseUrl}/social?q=%23chsFloodsHack`);
   }
 
   public getSpatials(): Observable<Spatial[]> {
@@ -65,5 +56,18 @@ export class BFFService {
         url: 'https://opendata.arcgis.com/datasets/a6c40fca30bf43eab66b4f71a1999feb_17.geojson'
       })
     ]);
+  }
+
+  private generateFilterParams(filterOptions: FilterOptions): HttpParams {
+    return Object.entries(filterOptions).reduce((prev: HttpParams, [key, value]) => {
+      if (Array.isArray(value) && value.length > 0) {
+        value.map(val => {
+          prev = prev.append(key, val.toString());
+        });
+      } else if (typeof value === 'string') {
+        prev = prev.set(key, value);
+      }
+      return prev;
+    }, new HttpParams());
   }
 }
