@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
-    AddEditToolRequest,
-    IdProvider,
-    Tool,
-    Spatial
-  } from '../models';
+  AddEditToolRequest,
+  FilterOptions,
+  Tool,
+  Spatial
+} from '../models';
 
 @Injectable()
 export class BFFService {
@@ -25,9 +25,10 @@ export class BFFService {
     return this.http.get<Tool>(`${this.baseUrl}/tools/${id}`);
   }
 
-  // public getTools(filterOptions: any): Observable<Tool[]> {
-
-  // }
+  public search(filterOptions: FilterOptions): Observable<Tool[]> {
+    const params = this.generateFilterParams(filterOptions);
+    return this.http.get<Tool[]>(`${this.baseUrl}/tools/search`, { params });
+  }
 
   public updateTool(id: string, editTool: AddEditToolRequest): Observable<number> {
     return this.http
@@ -37,6 +38,19 @@ export class BFFService {
           return response.status;
         })
       );
+  }
+
+  private generateFilterParams(filterOptions: FilterOptions): HttpParams {
+    return Object.entries(filterOptions).reduce((prev: HttpParams, [key, value]) => {
+      if (Array.isArray(value) && value.length > 0) {
+        value.map(val => {
+          prev = prev.append(key, val.toString());
+        });
+      } else if (typeof value === 'string') {
+        prev = prev.set(key, value);
+      }
+      return prev;
+    }, new HttpParams());
   }
 
   public getSpatials(): Observable<Spatial[]> {
