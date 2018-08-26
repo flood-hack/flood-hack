@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddEditToolComponent } from './add-edit-tool.component';
+import { SearchComponent } from './search.component';
 
 describe('AddToolComponent', () => {
-  let component: AddEditToolComponent;
-  let fixture: ComponentFixture<AddEditToolComponent>;
+  let component: SearchComponent;
+  let fixture: ComponentFixture<SearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddEditToolComponent]
+      declarations: [SearchComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEditToolComponent);
+    fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

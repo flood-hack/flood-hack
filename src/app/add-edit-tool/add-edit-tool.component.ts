@@ -36,9 +36,9 @@ export class AddEditToolComponent implements OnInit {
       name: ['', Validators.required],
       description: '',
       url: ['', Validators.required],
-      issues: undefined,
-      region: undefined,
-      toolFunctions: undefined
+      issues: [[]],
+      regions: [[]],
+      toolFunctions: [[]]
     });
 
     if (this.data.id) {
@@ -48,7 +48,7 @@ export class AddEditToolComponent implements OnInit {
           description: tool.description,
           url: tool.url,
           issues: tool.issues,
-          region: tool.region,
+          regions: tool.regions,
           toolFunctions: tool.toolFunctions
         });
       });

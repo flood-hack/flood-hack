@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddEditToolComponent } from '../add-edit-tool/add-edit-tool.component';
 import { IdProvider } from '../shared/models';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-tools',
@@ -10,6 +11,7 @@ import { IdProvider } from '../shared/models';
 })
 export class ToolsComponent {
   private addEditFormRef: MatDialogRef<AddEditToolComponent>;
+  private searchFormRef: MatDialogRef<SearchComponent>;
   private readonly width: string = '320px';
   constructor(
     private dialog: MatDialog
@@ -29,6 +31,12 @@ export class ToolsComponent {
           console.log(result.id + ' created!');
         }
       });
+  }
+
+  public openSearchForm(): void {
+    this.searchFormRef = this.dialog.open(SearchComponent, {
+      width: this.width
+    });
   }
 
   public opentEditForm(id: string): void {

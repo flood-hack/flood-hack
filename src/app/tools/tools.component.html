@@ -1,8 +1,25 @@
 <main>
-  <h1>Tools</h1>
-  <button mat-raised-button
-    color="primary"
-    (click)="openAddForm()">
-    Add Tool
-  </button>
+  <h1 class="mat-display-1">Tools</h1>
+  <section>
+    <button mat-raised-button
+      color="primary"
+      (click)="openAddForm()">
+      Add Tool
+    </button>
+    <button mat-raised-button
+      color="primary"
+      (click)="openSearchForm()">
+      <mat-icon>search</mat-icon> Search
+    </button>
+
+  </section>
+  <mat-grid-list cols="3"
+    rowHeight="150px">
+    <mat-grid-tile *ngFor="let tile of tiles"
+      [colspan]=1
+      [rowspan]=2>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
 </main>

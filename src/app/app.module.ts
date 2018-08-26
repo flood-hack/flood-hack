@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
+  MatIconModule,
   MatGridListModule,
   MatDialogModule,
   MatCardModule,
@@ -34,6 +35,7 @@ import { HomeComponent } from './home/home.component';
 import { AddEditToolComponent } from './add-edit-tool/add-edit-tool.component';
 
 import { BFFService } from './shared/services/bff.service';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -62,16 +64,19 @@ const routes: Routes = [
     MapComponent,
     ToolsComponent,
     HomeComponent,
-    AddEditToolComponent
+    AddEditToolComponent,
+    SearchComponent
   ],
   entryComponents: [
-    AddEditToolComponent
+    AddEditToolComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatIconModule,
     HttpClientModule,
     MatGridListModule,
     MatCardModule,
