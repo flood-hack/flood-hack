@@ -3,8 +3,29 @@ h1 {
   font: 400 34px/40px Roboto,"Helvetica Neue",sans-serif;
 }
 
+main {
+  padding-bottom: 20px;
+}
+
 section {
   display: flex;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+::ng-deep
+.mat-grid-tile .mat-figure {
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+h3 {
+  padding: 10px;
+}
+
+p {
+  padding: 10px;
 }
 
 .button-container {
