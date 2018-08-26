@@ -13,13 +13,27 @@ section {
 }
 
 .hero {
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 500px;
+  height: 400px;
   width: 100%;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  background: url(../../assets/flooding.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("https://bloximages.newyork1.vip.townnews.com/postandcourier.com/content/tncms/assets/v3/editorial/a/1e/a1efca90-9733-11e7-9858-1f96d8b87d96/59b6f86765f3e.image.jpg");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
