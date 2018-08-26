@@ -14,28 +14,25 @@
       </button>
     </div>
   </section>
-  <mat-grid-list [cols]="columns"
-    rowHeight="150px"
-    gutterSize="15px">
-    <mat-grid-tile *ngFor="let tool of tools"
-      [colspan]=1
-      [rowspan]=2>
-      <mat-card>
-        <mat-card-header>
-          {{ tool.name }}
-        </mat-card-header>
-        <mat-card-content>
-          {{ tool.description }}
-        </mat-card-content>
-        <mat-card-actions>
-          <a mat-button
-            [href]="tool.url"
-            color="primary">
-            View Resource
-          </a>
-        </mat-card-actions>
-      </mat-card>
-
-    </mat-grid-tile>
-  </mat-grid-list>
 </main>
+
+<div class="card-wrapper">
+  <mat-card *ngFor="let tool of tools"
+    class="tools-card">
+    <mat-card-header>
+      <mat-card-title>
+        {{ tool.name }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ tool.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button
+        [href]="tool.url"
+        color="primary">
+        View Resource
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

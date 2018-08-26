@@ -3,7 +3,17 @@ h1 {
   font: 400 34px/40px Roboto,"Helvetica Neue",sans-serif;
 }
 
-main {
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+::ng-deep .mat-card {
+  margin: 10px;
+  width: 300px;
+}
+
+/* main {
   padding-bottom: 20px;
 }
 
@@ -34,4 +44,4 @@ section {
   display: flex;
   width: 320px;
   justify-content: space-evenly;
-}
+} */
